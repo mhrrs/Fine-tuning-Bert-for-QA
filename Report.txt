@@ -1,0 +1,17 @@
+Michael Harris
+Deep Learning HW 3
+Dr. Feng
+4/1/2023
+
+Current extra credit implemented:
+- linear learning rate decay with use of huggingface Scheduler
+- Automatic Mixed Precision has been implemented, and it is quite similar in accuaracy to that of the regular training loop.
+--Amp was useful because it optimized the use of my machine by saving only necessary computation to the fp32 and instead use the smaller multiplication for fp16.
+- docstride was implemented in the tokenizer function in the preprocessing phase. It was set to a value of 128.
+- Gradient accumulation is a technique used to simulate larger batch_size without using a larger batch_size. It only updates the weights after several steps. Implemented and reduced training time by around 3 mins on each epoch to average around 18.5 mins per epoch.
+
+
+The current model makes use of all implementations above and applies them in the questions_answering script.
+
+The pretrained model that I used was from huggingface and was labeled as "bert-base-uncased". I use 5 epochs, a docstride of 128, and a batch size of 16. This was the most efficient and best performing iteration of me playing around with the model (I trained 6 different models).
+

@@ -1,0 +1,41 @@
+3/26/2023:
+we have successfully preprocessed the answers, questions, and contexts into their own bins. Now we will tokenize them.
+
+THERE MAY BE AN ISSUE with:
+- add_token_positions function
+- Formatting. We sometimes get no predictions at all.
+- I have NoneTypes in my data. 
+- - I think the issue is that my train_loader has 512 tokens, and my training function breaks at 511. Seems correlated.
+- If batch_size is bigger than 16, there begins to be an issue with memory management and CUDA
+
+TRAINING AND TESTING COMPLETE:
+The difference between v1 and v2 is the batch_size of the dataloader.
+
+v3:
+- has the best attempts yet as it is capable of answering the most questions. It's issue is that it isn't super accurate.
+
+v4:
+- has the best attempts and the longest training time. This model included the learning rate decay and fixed some preprocessing issues.
+-- currently training it on a larger dataset
+Result: With the increased training time (around 3.75 hours) and linear learning rate decay implemented, it achieved a far better result. Still should implement more though if possible.
+
+v5:
+- matches v4 with similar accuracy ratings but trains itself about 1.67 hours. Which is a dramatic improvement over v4 in terms of training speed.
+- v5 also uses docstride and linear learning rate decay.
+
+
+IDEAS:
+page16 includes the slide window concept. This may be useful.
+
+
+
+Current extra credit implemented:
+- linear learning rate decay with use of huggingface Scheduler
+- Automatic Mixed Precision has been implemented, and it is quite similar in accuaracy to that of the regular training loop.
+--Amp was useful because it optimized the use of my machine by saving only necessary computation to the fp32 and instead use the smaller multiplication for fp16.
+- docstride was implemented in the tokenizer function in the preprocessing phase. It was set to a value of 128.
+- Gradient accumulation is a technique used to simulate larger batch_size without using a larger batch_size. It only updates the weights after several steps. Implemented and reduced training time by around 3 mins on each epoch to average around 18.5 mins per epoch.
+
+3/29/2023:
+The model successfully works and I am now working on extra credit. Specifically AMP. I cannot seem to get it to work, but we will see.
+-print the contents of the output from the model to see if it is trying to represent the start:end position index. if it does then this might be a solution.
