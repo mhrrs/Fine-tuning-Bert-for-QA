@@ -1,6 +1,4 @@
 Michael Harris
-Deep Learning HW 3
-Dr. Feng
 4/1/2023
 
 Current extra credit implemented:

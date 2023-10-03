@@ -25,11 +25,10 @@ v5:
 
 
 IDEAS:
-page16 includes the slide window concept. This may be useful.
+Review the slide window concept. This may be useful.
 
 
-
-Current extra credit implemented:
+Other items to be implemented:
 - linear learning rate decay with use of huggingface Scheduler
 - Automatic Mixed Precision has been implemented, and it is quite similar in accuaracy to that of the regular training loop.
 --Amp was useful because it optimized the use of my machine by saving only necessary computation to the fp32 and instead use the smaller multiplication for fp16.
@@ -37,5 +36,5 @@ Current extra credit implemented:
 - Gradient accumulation is a technique used to simulate larger batch_size without using a larger batch_size. It only updates the weights after several steps. Implemented and reduced training time by around 3 mins on each epoch to average around 18.5 mins per epoch.
 
 3/29/2023:
-The model successfully works and I am now working on extra credit. Specifically AMP. I cannot seem to get it to work, but we will see.
+The model successfully works and I am now working on extra stuff. Specifically AMP. I cannot seem to get it to work, but we will see.
 -print the contents of the output from the model to see if it is trying to represent the start:end position index. if it does then this might be a solution.
